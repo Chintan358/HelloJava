@@ -18,11 +18,18 @@ public class MainController {
 		return "index";
 	}
 	
+	/**********************Sales*******************************/
+	
 	@RequestMapping("/sales")
 	public String Salehome()
 	{
-		return "	";
+		return "sales";
 	}
 	
 	
+	@RequestMapping("/product")
+	public String productPage()
+	{
+		return "product";
+	}
 }

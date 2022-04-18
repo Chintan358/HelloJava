@@ -26,24 +26,23 @@
  <mvc:resources location="/WEB-INF/js/" mapping="/js/**"></mvc:resources>
  <mvc:resources location="/WEB-INF/assets/demo/" mapping="/demo/**"></mvc:resources>
  <mvc:resources location="/WEB-INF/assets/img/" mapping="/img/**"></mvc:resources>
-	<!-- <bean
+	<bean
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource"
 		id="dataSource">
 		<property name="driverClassName"
 			value="com.mysql.cj.jdbc.Driver"></property>
-		<property name="url" value="jdbc:mysql://localhost:3306/springmvc"></property>
+		<property name="url" value="jdbc:mysql://localhost:3306/crm"></property>
 		<property name="username" value="root"></property>
 		<property name="password" value=""></property>
 	</bean>
 
-	Hibernate SessionFactory
+	<!-- Hibernate SessionFactory -->
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
 		<property name="dataSource" ref="dataSource"></property>
 		<property name="annotatedClasses">
 			<list>
-				<value>com.model.Student</value>
-				<value>com.model.Country</value>
+				<value>com.model.Category</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
@@ -62,7 +61,7 @@
 	</bean>
 	
 	
-	<tx:annotation-driven transaction-manager="transactionManager" /> -->
+	<tx:annotation-driven transaction-manager="transactionManager" />
 	
 	
 </beans>

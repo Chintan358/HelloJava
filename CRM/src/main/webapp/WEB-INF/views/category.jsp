@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+    <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -8,7 +10,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Sales - Home</title>
+        <title>Sales - Product Category</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
@@ -45,7 +47,7 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                            
-                             <jsp:include page="sales-sidebar.jsp"></jsp:include>  
+                         <jsp:include page="sales-sidebar.jsp"></jsp:include>  
                             
                           
                         </div>
@@ -61,46 +63,78 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Sales Department</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Sales</li>
+                            <li class="breadcrumb-item active">Product Category</li>
                         </ol>
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                        
+                        <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-5">
+                                <div class="card shadow-lg border-0 rounded-lg ">
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Product Category</h3></div>
+                                    <div class="card-body">
+                                        <form>
+                                        	
+                                        	
+                                        
+                                            <div class="form-floating mb-3">
+                                                <input class="form-control" id="pCategory" type="text" placeholder="name@example.com" />
+                                                <label for=""pCategory"">Product Category</label>
+                                            </div>
+                                           
+                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
+                                              
+                                                <a class="btn btn-primary" href="index.html">Add Category</a>
+                                            </div>
+                                        </form>
                                     </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
+                                    
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="row justify-content-center">
+                        
+                        <div class="card mb-4">
+                            <div class="card-header">
+                                <i class="fas fa-table me-1"></i>
+                               	Category List
+                            </div>
+                            <div class="card-body">
+                                <table id="datatablesSimple">
+                                    <thead>
+                                        <tr>
+                                            <th>Category Id</th>
+                                            <th>Category Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>Category Id</th>
+                                            <th>Category Name</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        
+                                        <c:forEach var="ct" items="${catdata}">
+                                        <tr>
+                                        <td>${ct.getCat_id()}</td>
+                                        <td>${ct.getCat_name()}</td>
+                                        </tr>
+                                        </c:forEach>
+                                        
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        
+                        
+                        
+                        </div>
+                        
+                        
+                    </div>
                       
                        
                     </div>
