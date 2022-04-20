@@ -19,14 +19,17 @@ public class CategoryDaoImpl implements CategoryDao
 	
 	@Override
 	public void addCategory(Category cat) {
-		// TODO Auto-generated method stub
 		
+		Session s  =sessionFactory.getCurrentSession();
+		s.saveOrUpdate(cat);
 	}
 
 	@Override
 	public void deleteCategory(int id) {
-		// TODO Auto-generated method stub
 		
+		Session s  =sessionFactory.getCurrentSession();
+		Category c = s.load(Category.class, id);
+		s.delete(c);
 	}
 
 	@Override
@@ -38,8 +41,9 @@ public class CategoryDaoImpl implements CategoryDao
 
 	@Override
 	public Category getCatById(int id) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		Session s  =sessionFactory.getCurrentSession();
+		return s.get(Category.class, id);
 	}
 
 }

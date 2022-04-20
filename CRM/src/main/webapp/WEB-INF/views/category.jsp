@@ -2,6 +2,7 @@
     pageEncoding="ISO-8859-1"%>
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
     <%@ page isELIgnored="false" %>
+    <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -72,20 +73,21 @@
                                 <div class="card shadow-lg border-0 rounded-lg ">
                                     <div class="card-header"><h3 class="text-center font-weight-light my-4">Product Category</h3></div>
                                     <div class="card-body">
-                                        <form>
+                                        <form:form modelAttribute="category" action="addCat" method="post">
                                         	
                                         	
                                         
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="pCategory" type="text" placeholder="name@example.com" />
-                                                <label for=""pCategory"">Product Category</label>
-                                            </div>
+                                           <form:hidden path="cat_id"/>
+                                          	<form:label path="cat_name">Product Category</form:label>
+                                            <form:input path="cat_name" class="form-control"/>
+                                        	<form:errors path="cat_name"></form:errors>
                                            
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                               
-                                                <a class="btn btn-primary" href="index.html">Add Category</a>
+                                             <input type="submit" value="Add Category" class="btn btn-primary" >  
                                             </div>
-                                        </form>
+                                            
+                                        </form:form>
                                     </div>
                                     
                                 </div>
@@ -112,7 +114,7 @@
                                         <tr>
                                             <th>Category Id</th>
                                             <th>Category Name</th>
-                                            <th>Action</th>
+                                            <th colspan="2">Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
@@ -121,6 +123,8 @@
                                         <tr>
                                         <td>${ct.getCat_id()}</td>
                                         <td>${ct.getCat_name()}</td>
+                                        <td><a href="updateCat?ctid=${ct.getCat_id()}"><button class="btn btn-primary" >Update</button></a></td>
+                                         <td><a href="deleteCat?ctid=${ct.getCat_id()}"><button class="btn btn-success">Delete</button></a></td>
                                         </tr>
                                         </c:forEach>
                                         
