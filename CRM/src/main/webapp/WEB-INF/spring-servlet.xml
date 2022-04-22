@@ -43,6 +43,7 @@
 		<property name="annotatedClasses">
 			<list>
 				<value>com.model.Category</value>
+				<value>com.model.UserRoll</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">

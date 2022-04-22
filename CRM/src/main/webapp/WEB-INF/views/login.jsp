@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+     <%@ page isELIgnored="false" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>0
@@ -25,8 +27,13 @@
                                         <form>
                                         	
                                         	<div class="form-floating mb-3">
+                                        	
+                                        	
 											<select class="form-control" id="inputrole">
-											<option>---Select Role---</option>
+											<c:forEach var="dt" items="${roles}">
+											<option value="${dt.getRollId()}">${dt.getRollName()}</option>
+											</c:forEach>
+											
 											</select> 
                                             </div>
                                         
