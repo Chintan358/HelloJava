@@ -64,27 +64,50 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Admin Department</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active"> Userroll</li>
+                            <li class="breadcrumb-item active">Add User</li>
                         </ol>
                         
                         <div class="container">
                         <div class="row justify-content-center">
                             <div class="col-lg-5">
                                 <div class="card shadow-lg border-0 rounded-lg ">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Product Userroll</h3></div>
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Add User</h3></div>
                                     <div class="card-body">
-                                        <form:form modelAttribute="userrole" action="addRole" method="post">
+                                        <form:form modelAttribute="users" action="addUser" method="post">
                                         	
                                         	
-                                        
-                                           <form:hidden path="rollId"/>
-                                          	<form:label path="rollName">Userroll</form:label>
-                                            <form:input path="rollName" class="form-control"/>
-                                        	<form:errors path="rollName"></form:errors>
+                                        	<%-- <form:label path="userRoll">Select Role</form:label>
+                                           <form:select path="userRoll" class="form-control">
+                                           <c:forEach var="ur" items="${roles}">
+                                           <form:option value="${ur}">${ur.getRollName()}</form:option>
+                                           </c:forEach>
+
+                                           </form:select> --%>
                                            
+                                           <select class="form-control" id="inputrole" name="rollid">
+											<c:forEach var="dt" items="${roles}">
+											<option value="${dt.getRollId()}">${dt.getRollName()}</option>
+											</c:forEach>
+                                           
+                                           <form:hidden path="UserId"/>
+                                          	<form:label path="UserName">Enter User Name</form:label>
+                                            <form:input path="UserName" class="form-control"/>
+                                            
+                                            <form:label path="PhoneNumber">Enter Phone number</form:label>
+                                            <form:input path="PhoneNumber" class="form-control"/>
+                                            
+                                            <form:label path="Eamil">Enter Email</form:label>
+                                            <form:input path="Eamil" class="form-control"/>
+                                            
+                                            <form:label path="Password">Enter Password</form:label>
+                                            <form:input path="Password" class="form-control"/>
+                                            
+                                            <form:label path="Address">Enter Address</form:label>
+                                            <form:input path="Address" class="form-control"/>
+                                            
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                               
-                                             <input type="submit" value="Add Userroll" class="btn btn-primary" >  
+                                             <input type="submit" value="Add User" class="btn btn-primary" >  
                                             </div>
                                             
                                         </form:form>
@@ -99,33 +122,48 @@
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                               	Userroll List
+                               	User List
                             </div>
                             <div class="card-body">
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                            <th>Userroll Id</th>
-                                            <th>Userroll Name</th>
-                                            <th>Action</th>
+                                            <th>User Id</th>
+                                            <th>User Name</th>
+                                            <th>Phone Number</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Address</th>
+                                            <th>User Role</th>
+                                            <th colspan="2">Action</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>Userroll Id</th>
-                                            <th>Userroll Name</th>
+                                            <th>User Id</th>
+                                            <th>User Name</th>
+                                            <th>Phone Number</th>
+                                            <th>Email</th>
+                                            <th>Password</th>
+                                            <th>Address</th>
+                                            <th>User Role</th>
                                             <th colspan="2">Action</th>
                                         </tr>
                                     </tfoot>
                                     <tbody>
                                         
-                                        <c:forEach var="ct" items="${roles}">
+                                        <c:forEach var="ud" items="${userdata}">
                                         <tr>
-                                        <td>${ct.getRollId()}</td>
-                                        <td>${ct.getRollName()}</td>
-                                        <td><a href="updateRole?ctid=${ct.getRollId()}"><button class="btn btn-primary" >Update</button></a></td>
+                                        <td>${ud.getUserId()}</td>
+                                        <td>${ud.getUserName()}</td>
+                                        <td>${ud.getPhoneNumber()}</td>
+                                        <td>${ud.getEamil()}</td>
+                                        <td>${ud.getPassword()}</td>
+                                        <td>${ud.getAddress()}</td>
+                                        <td>${ud.getUserRoll().getRollName()}</td>
+                                        <%-- <td><a href="updateRole?ctid=${ct.getRollId()}"><button class="btn btn-primary" >Update</button></a></td>
                                          <td><a href="deleteRole?ctid=${ct.getRollId()}"><button class="btn btn-success">Delete</button></a></td>
-                                        </tr>
+                                        --%> </tr>
                                         </c:forEach>
                                         
                                     </tbody>

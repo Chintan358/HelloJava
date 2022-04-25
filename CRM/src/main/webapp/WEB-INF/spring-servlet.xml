@@ -44,6 +44,7 @@
 			<list>
 				<value>com.model.Category</value>
 				<value>com.model.UserRoll</value>
+				<value>com.model.User</value>
 			</list>
 		</property>
 		<property name="hibernateProperties">
